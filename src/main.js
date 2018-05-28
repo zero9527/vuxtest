@@ -5,8 +5,12 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
 import Home from './components/HelloFromVux'
+import { LoadingPlugin, XButton } from 'vux'
+
+Vue.component('x-button', XButton);
 
 Vue.use(VueRouter)
+Vue.use(LoadingPlugin)
 
 const routes = [{
   path: '/',
