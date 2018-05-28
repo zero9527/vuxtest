@@ -5,6 +5,8 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
 import Home from './components/HelloFromVux'
+import aac from './Components/aac'
+import aab from './Components/aab'
 import { LoadingPlugin, XButton } from 'vux'
 
 Vue.component('x-button', XButton)
@@ -14,7 +16,16 @@ Vue.use(LoadingPlugin)
 
 const routes = [{
   path: '/',
+  name: 'home',
   component: Home
+},{
+	path: '/aac',
+	name: 'aac',
+	component: aac
+},{
+	path: '/aab',
+	name: 'aab',
+	component: aab
 }]
 
 const router = new VueRouter({

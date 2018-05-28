@@ -7,6 +7,8 @@
     <group title="cell demo">
       <cell title="VUX" value="cool" is-link></cell>
     </group>
+    <router-link to='/aac'><x-button>aac</x-button></router-link>
+    <x-button @click.native='toaac'>AAB</x-button>
     <!-- loading -->
     <div style="padding: 15px;">
       <x-button @click.native="showLoading" type="primary">显示loading (2s后关闭)</x-button>
@@ -124,6 +126,10 @@ export default {
     }
   },
   methods: {
+    toaac (e){
+      this.$router.push('/aab');
+      console.log(e);
+    },
     showLoading () {
       this.$vux.loading.show({
         text: 'Loading'
@@ -169,7 +175,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .vux-demo {
   text-align: center;
 }
