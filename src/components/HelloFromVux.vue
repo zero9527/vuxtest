@@ -85,20 +85,24 @@ export default {
       addressData: ChinaAddressV4Data,
       demo01_list: baseList,
       demo01_index: 0,
-      preimgList: [{
+      preimgList: [
+        {
           msrc: 'http://ww1.sinaimg.cn/thumbnail/663d3650gy1fplwu9ze86j20m80b40t2.jpg',
           src: 'http://ww1.sinaimg.cn/large/663d3650gy1fplwu9ze86j20m80b40t2.jpg',
           w: 800,
           h: 400
-        },{
+        },
+        {
           msrc: 'http://ww1.sinaimg.cn/thumbnail/663d3650gy1fplwvqwuoaj20xc0p0t9s.jpg',
           src: 'http://ww1.sinaimg.cn/large/663d3650gy1fplwvqwuoaj20xc0p0t9s.jpg',
           w: 1200,
           h: 900
-        },{
-        msrc: 'http://ww1.sinaimg.cn/thumbnail/663d3650gy1fplwwcynw2j20p00b4js9.jpg',
-        src: 'http://ww1.sinaimg.cn/large/663d3650gy1fplwwcynw2j20p00b4js9.jpg'
-      }],
+        },
+        {
+          msrc: 'http://ww1.sinaimg.cn/thumbnail/663d3650gy1fplwwcynw2j20p00b4js9.jpg',
+          src: 'http://ww1.sinaimg.cn/large/663d3650gy1fplwwcynw2j20p00b4js9.jpg'
+        }
+      ],
       preimgoptions: {
         getThumbBoundsFn (index) {
           // find thumbnail element
@@ -116,7 +120,7 @@ export default {
       },
       logIndexChange (arg) {
         console.log(arg)
-      },
+      }
     }
   },
   methods: {
@@ -161,7 +165,7 @@ export default {
     show (index) {
       this.$refs.previewer.show(index)
     }
-  },
+  }
 }
 </script>
 

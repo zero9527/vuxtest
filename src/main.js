@@ -7,7 +7,7 @@ import App from './App'
 import Home from './components/HelloFromVux'
 import { LoadingPlugin, XButton } from 'vux'
 
-Vue.component('x-button', XButton);
+Vue.component('x-button', XButton)
 
 Vue.use(VueRouter)
 Vue.use(LoadingPlugin)
