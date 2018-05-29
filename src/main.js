@@ -9,6 +9,8 @@ import aac from './Components/aac'
 import aa from './Components/aa'
 import cc from './Components/cc'
 import bbb from './Components/bbb'
+import ddd from './Components/ddd'
+
 import { LoadingPlugin, XButton } from 'vux'
 
 Vue.component('x-button', XButton)
@@ -43,6 +45,10 @@ const routes = [
 				component: cc
 			}
 		]
+	},
+	{	// 假装是aac的儿子
+		path: '/aac/ddd',
+		component: ddd
 	}
 ]
 const router = new VueRouter({
