@@ -1,26 +1,15 @@
 <template>
   <div class="hello">
     <p>{{msg}}</p>
-    <router-link to='/aac/aa'>
-      <x-button>aa</x-button>
-    </router-link>
-    <router-link to='/aac/cc'>
-      <x-button>cc</x-button>
-    </router-link>
-    <router-link to='/bbb'>
-      <x-button>同级组件bbb</x-button>
-    </router-link>
-    <!-- 以上aa, cc将被渲染在下面router-view中 -->
-    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'aac',
+  name: 'BBB',
   data () {
     return {
-      msg: 'Welcome to aac'
+      msg: 'Welcome to Bbb'
     }
   }
 }

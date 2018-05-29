@@ -4,9 +4,11 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
-import Home from './components/HelloFromVux'
+import Vux from './components/HelloFromVux'
 import aac from './Components/aac'
-import aab from './Components/aab'
+import aa from './Components/aa'
+import cc from './Components/cc'
+import bbb from './Components/bbb'
 import { LoadingPlugin, XButton } from 'vux'
 
 Vue.component('x-button', XButton)
@@ -14,26 +16,42 @@ Vue.component('x-button', XButton)
 Vue.use(VueRouter)
 Vue.use(LoadingPlugin)
 
-const routes = [{
-  path: '/',
-  name: 'home',
-  component: Home
-},{
-	path: '/aac',
-	name: 'aac',
-	component: aac
-},{
-	path: '/aab',
-	name: 'aab',
-	component: aab
-}]
-
+const routes = [
+	{
+	  path: '/',
+	  name: 'Vux',
+	  component: Vux
+	},
+	{
+		path: '/bbb',
+		name: 'bbb',
+		component: bbb
+	},
+	{
+		path: '/aac',
+		name: 'aac',
+		component: aac,
+		children: [
+			{
+				path: 'aa',
+				name: 'aa',
+				component: aa
+			},
+			{
+				path: 'cc',
+				name: 'cc',
+				component: cc
+			}
+		]
+	}
+]
 const router = new VueRouter({
   routes
 })
 
 FastClick.attach(document.body)
 
+Vue.config.devtools = true; //Õâ²½ºÜÖØÒª
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
