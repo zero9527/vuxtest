@@ -8,34 +8,47 @@
     <router-link to='/aac/aa'>
       <x-button>aa</x-button>
     </router-link>
-    <router-link to='/aac/cc'>
+    <!-- <router-link to='/aac/cc'>
       <x-button>cc</x-button>
-    </router-link>
-    <router-link to='/bbb'>
-      <x-button>同级组件bbb</x-button>
-    </router-link>
+    </router-link> -->
+    <!-- 将time传给子组件 cc，然后cc 用props接 -->
+    <cc :time='time' @cc-son='receiveFromCc'></cc>
     <!-- 跳转到 ddd 假装是 aac的儿子-->
     <router-link to='/aac/ddd'>
       <x-button>同级？子？组件ddd</x-button>
     </router-link>
-    <!-- 以上aa, cc将被渲染在下面router-view中 -->
+    <!-- 以上aa, cc 是当前组件aac 的嵌套路由，将被渲染在下面router-view中 -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import cc from '@/Components/cc'
+
 export default {
   name: 'aac',
+  components: {
+    cc
+  },
   data () {
     return {
-      msg: 'Welcome to aac'
+      msg: 'Welcome to aac',
+      time: '来自aac ' + new Date(),
+      name: 'haha'
     }
   },
   methods: {
     // 后退
     back () {
       history.back();
+    },
+    // 接收子组件 cc emit来的数据
+    receiveFromCc (data) {
+      console.log('ccData: ',data);
     }
+  },
+  created () {
+    // console.log('router: ',this.$router);
   }
 }
 </script>

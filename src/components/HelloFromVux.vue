@@ -171,6 +171,9 @@ export default {
     show (index) {
       this.$refs.previewer.show(index)
     }
+  },
+  created () {
+    console.log('vue: ',this);
   }
 }
 </script>

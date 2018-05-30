@@ -10,6 +10,8 @@ import aa from './Components/aa'
 import cc from './Components/cc'
 import bbb from './Components/bbb'
 import ddd from './Components/ddd'
+// 事件总线
+import Bus from './eventbus'
 
 import { LoadingPlugin, XButton } from 'vux'
 
