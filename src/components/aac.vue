@@ -4,7 +4,7 @@
     <router-link to='/'>
       <x-button>当前顶级路由</x-button>
     </router-link>
-    <!-- 上传文件 -->
+    <!-- 上传文件 upnum 为最大上传图片数量 -->
     <upimg :upnum='upnum'></upimg>
     <x-button @click.native='back'>后退</x-button>
 

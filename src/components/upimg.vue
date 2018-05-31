@@ -63,20 +63,23 @@ export default {
         
       }else{
         // 显示loading 
-        vm.$vux.loading.show({
-          text: '读取中...'
-        })
+        // vm.$vux.loading.show({
+        //   text: '读取中...'
+        // })
       }
       // 读取图片
       upImg( _this, function(){
         // 压缩提示(不压缩不进来)
         console.log('图片压缩中...');
+        // vm.toastFn('top', `图片压缩中...`);
         vm.$vux.loading.show({
           text: '压缩中...'
         })
 
       }, function(res){
-        vm.$vux.loading.hide()
+        setTimeout(() => {
+          vm.$vux.loading.hide();
+        },500)
         // console.log('res: ',res);
         // binsrc: 用于上传到服务器
         // src: 用于图片预览
@@ -88,11 +91,10 @@ export default {
           })
           vm.upbus();
         }
-       
       })
       setTimeout(function() {
         vm.$vux.loading.hide()
-      },1000);
+      },500);
 
     },
     // 点击 xx 移除元素

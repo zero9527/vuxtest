@@ -132,13 +132,12 @@ function upImg( input, COMFN, CALLBACK){
 	var ctx = canvas.getContext("2d");
 	var img = new Image();
 	function compressImage(_url, fallback) {
+		// 压缩提示回调
+		COMFN();
 		img.src = _url;
-
 		img.onload = function(){
 			canvas.width = img.width;
 			canvas.height = img.height;
-			// 压缩提示回调
-			COMFN();
 			setTimeout(function(){
 				ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 				var src = canvas.toDataURL('image/jpeg', .6);
