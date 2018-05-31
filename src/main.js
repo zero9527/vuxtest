@@ -6,16 +6,16 @@ import VueRouter from 'vue-router'
 import App from './App'
 import Vux from './components/HelloFromVux'
 import aac from './Components/aac'
-import aa from './Components/aa'
 import cc from './Components/cc'
 import bbb from './Components/bbb'
 import ddd from './Components/ddd'
 // 事件总线
 import Bus from './eventbus'
 
-import { LoadingPlugin, XButton } from 'vux'
+import { LoadingPlugin, XButton, Toast } from 'vux'
 
 Vue.component('x-button', XButton)
+Vue.component('toast', Toast)
 
 Vue.use(VueRouter)
 Vue.use(LoadingPlugin)
@@ -36,11 +36,6 @@ const routes = [
 		name: 'aac',
 		component: aac,
 		children: [
-			{
-				path: 'aa',
-				name: 'aa',
-				component: aa
-			},
 			{
 				path: 'cc',
 				name: 'cc',

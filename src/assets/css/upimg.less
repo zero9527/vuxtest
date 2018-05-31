@@ -1,6 +1,7 @@
 #picShow {
 	width: 100%;
-	height: 20vh;
+	display: flex;
+	flex-wrap: wrap;
 	box-sizing: border-box;
     padding: 4px 4%;
     &::after {
@@ -8,21 +9,20 @@
     	clear: both;
     }
 	&>span {
+		flex: 30% 0 0;
 		width: 30%;
-		height: 100%;
+		height: 20vh;
 		line-height: 20vh;
 		display: inline-block;
 		position: relative;
 		float: left;
-		margin: 10px 0;
-		margin-right: 2%;
+		margin: 10px 4px;
 		border-radius: 4px;
 		border: 1px solid #aaa;
 	}
 	span img {
     	width: 100%;
 		height: 100%;
-		/*vertical-align: middle;*/
 	}
 	.delPic {
 		width: 30px;
