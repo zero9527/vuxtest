@@ -1,6 +1,6 @@
 <template>
   <div class="upimg">
-    <input :type="maxnum ? 'button' : 'file'" :value='maxnum ? "达到最大数量" : ""' id='file' multiple="" @click='upfile($event)'>
+    <input :type="maxnum ? 'button' : 'file'" :value='maxnum ? "达到最大数量" : ""' id='file' @click='upfile($event)'>
     <div id='picShow'>
       <span v-for='p in picshowList'>
         <span 
@@ -33,7 +33,7 @@ export default {
       maxnum: false,
       toastext: '',
       toasttime: 800,
-      toastwidth: '10vw',
+      toastwidth: 'auto',
       showToast: false,
       toastP: 'top',
       showLoading: false,
@@ -56,6 +56,7 @@ export default {
       this.showToast = true
       this.toastext = text
     },
+    // 图片上传插件
     upfile (e) {
       let vm = this;
       let _this = e.currentTarget;
@@ -72,9 +73,8 @@ export default {
         
       }else{
         // 显示loading 
-        // vm.$vux.loading.show({
-        //   text: '读取中...'
-        // })
+        vm.loadText = '读取中...';
+        vm.showLoading = true;
         
       }
       // 读取图片
@@ -88,7 +88,7 @@ export default {
         // console.log('res: ',res);
         // binsrc: 用于上传到服务器
         // src: 用于图片预览
-        if(res.err){
+        if(res.err){    // 图片大于6m
           vm.toastwidth = '80vw';
           vm.toasttime = 1500,
           vm.toastFn('top', res.err);
@@ -133,14 +133,14 @@ export default {
     },
     upbus () {
       Bus.$emit('upimg', this.picshowList);
-    },
-    beforeDestroy () {
-      this.upbus();
-    },
-    destroyed () {
-      // 注销事件
-      Bus.$off('upimg', this.upbus);
     }
+  },
+  beforeDestroy () {
+    this.upbus();
+  },
+  destroyed () {
+    // 注销事件
+    Bus.$off('upimg', this.upbus);
   }
 }
 </script>
