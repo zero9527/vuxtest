@@ -90,6 +90,12 @@ function upImg( input, COMFN, CALLBACK){
 		var dx = (e.total/1024)/1024;
 		var result = file_reader.result;
 		// console.log('e: ',e);
+		if(dx > 6){
+			backdata['err'] = '文件大于6M，请上传小于6M的图片';
+			// 回调
+			CALLBACK(backdata);
+			return
+		}
 		if(dx >= 2){
 			console.log("文件大小大于2M");
 			//文件大于2M则压缩后上传

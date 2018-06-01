@@ -10,7 +10,8 @@
         <img :src="p.src" alt="">
       </span>
     </div>
-    <toast v-model='showToast' type="text" :time="800" is-show-mask :text="toastext" :position="toastP"></toast>
+    <toast v-model='showToast' type="text" :width='toastwidth' :time="toasttime" is-show-mask :text="toastext" :position="toastP"></toast>
+    <loading v-model="showLoading" :text="loadText"></loading>
   </div>
 </template>
 
@@ -18,8 +19,12 @@
 // 图片上传插件
 import Bus from '../eventbus'
 import { upImg } from '../assets/js/upimg.js'
+import { Loading } from 'vux'
 export default {
   name: 'upimg',
+  components: {
+    Loading
+  },
   props: ['upnum'],
   data () {
     return {
@@ -27,8 +32,12 @@ export default {
       imgnum: 1,  // 图片数量（父组件传）
       maxnum: false,
       toastext: '',
+      toasttime: 800,
+      toastwidth: '10vw',
       showToast: false,
-      toastP: 'top'
+      toastP: 'top',
+      showLoading: false,
+      loadText: ''
     }
   },
   created () {
@@ -37,7 +46,7 @@ export default {
     // console.log('this.upnum: ',this.upnum);
   },
   mounted () {
-    var vm = this;
+    let vm = this;
     console.log('upimg: ',upImg);
   },
   methods: {
@@ -66,23 +75,24 @@ export default {
         // vm.$vux.loading.show({
         //   text: '读取中...'
         // })
+        
       }
       // 读取图片
       upImg( _this, function(){
         // 压缩提示(不压缩不进来)
         console.log('图片压缩中...');
-        // vm.toastFn('top', `图片压缩中...`);
-        vm.$vux.loading.show({
-          text: '压缩中...'
-        })
+        vm.loadText = '图片压缩中...';
+        vm.showLoading = true;
 
       }, function(res){
-        setTimeout(() => {
-          vm.$vux.loading.hide();
-        },500)
         // console.log('res: ',res);
         // binsrc: 用于上传到服务器
         // src: 用于图片预览
+        if(res.err){
+          vm.toastwidth = '80vw';
+          vm.toasttime = 1500,
+          vm.toastFn('top', res.err);
+        }
         if(res.src){
           vm.picshowList.push({
             binsrc: res.binsrc,
@@ -90,11 +100,16 @@ export default {
             time: new Date().getTime()
           })
           vm.upbus();
+          setTimeout(() => {
+            vm.showLoading = false;
+          },300)
         }
       })
       setTimeout(function() {
-        vm.$vux.loading.hide()
-      },500);
+        if(vm.showLoading){
+          vm.showLoading = false;
+        }
+      },3000);
 
     },
     // 点击 xx 移除元素

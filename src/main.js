@@ -54,11 +54,21 @@ const router = new VueRouter({
 
 FastClick.attach(document.body)
 
-Vue.config.devtools = true; //Õâ²½ºÜÖØÒª
+Vue.config.devtools = true; // 开启devtools
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   router,
+  created () {
+  	this.$vux.loading.show({
+      text: '页面加载中...'
+    })
+  },
+  mounted () {
+  	setTimeout(() => {
+  		this.$vux.loading.hide();
+  	},1000)
+  },
   render: h => h(App)
 }).$mount('#app-box')

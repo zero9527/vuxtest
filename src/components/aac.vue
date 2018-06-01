@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="aac">
     <p>{{msg}}</p>
     <router-link to='/'>
       <x-button>当前顶级路由</x-button>
