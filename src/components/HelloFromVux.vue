@@ -13,6 +13,11 @@
     <div style="padding: 15px;">
       <x-button @click.native="showLoading" type="primary">显示loading (2s后关闭)</x-button>
     </div>
+    <group title="选择型号" >
+      <!-- popup-picker 选择器 -->
+      <popup-picker :title="title1" :data="list1" v-model="value1" @on-show="onShow" @on-hide="onHide" @on-change="onChange" :placeholder="pickerp"></popup-picker>
+    </group>
+
     <!-- 地图 -->
     <div>
       <group>
@@ -42,7 +47,7 @@ Show loading:
 </i18n> -->
 
 <script>
-import { Group, Cell, XAddress, ChinaAddressV4Data, Value2nameFilter as value2name, Datetime, Swiper, Previewer, TransferDom } from 'vux'
+import { Group, Cell, XAddress, ChinaAddressV4Data, Value2nameFilter as value2name, Datetime, Swiper, Previewer, TransferDom, PopupPicker } from 'vux'
 
 // 轮播图图片
 const baseList = [{
@@ -72,6 +77,7 @@ export default {
     Swiper,       // 轮播图
     Previewer,    // 图片预览
     TransferDom,  // 过度效果
+    PopupPicker,
   },
   data () {
     return {
@@ -87,6 +93,11 @@ export default {
       addressData: ChinaAddressV4Data,
       demo01_list: baseList,
       demo01_index: 0,
+      pickerp: '请选择手机',
+      title1: '手机机型',
+      list1: [['小米', 'iPhone', '华为', '情怀', '三星', '其他', '不告诉你']],
+      value1: ['iPhone'],
+      // 图片点击预览
       preimgList: [
         {
           msrc: 'http://ww1.sinaimg.cn/thumbnail/663d3650gy1fplwu9ze86j20m80b40t2.jpg',
@@ -170,7 +181,19 @@ export default {
     },
     show (index) {
       this.$refs.previewer.show(index)
-    }
+    },
+    change (value) {
+      console.log('new Value', value)
+    },
+    onShow () {
+      console.log('on show')
+    },
+    onHide (type) {
+      console.log('on hide', type)
+    },
+    onChange (val) {
+      console.log('val change', val)
+    },
   },
   created () {
     console.log('vue: ',this);
