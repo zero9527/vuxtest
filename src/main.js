@@ -9,11 +9,13 @@ import aac from './Components/aac'
 import cc from './Components/cc'
 import bbb from './Components/bbb'
 import ddd from './Components/ddd'
+import detail from './Components/detail'
 // 事件总线
 import Bus from './eventbus'
 
+import axios from 'axios'
 import { LoadingPlugin, XButton, Toast } from 'vux'
-
+Vue.prototype.$ajax = axios
 Vue.component('x-button', XButton)
 Vue.component('toast', Toast)
 
@@ -45,7 +47,11 @@ const routes = [
 	},
 	{	// 假装是aac的儿子
 		path: '/aac/ddd',
-		component: ddd
+		component: ddd,
+	},
+	{
+		path: '/ddd/detail',
+		component: detail
 	}
 ]
 const router = new VueRouter({
