@@ -37,7 +37,7 @@ export default {
   created () {
     let vm = this;
     let name = vm.$route.query.name;
-    vm.$ajax.get('src/assets/detail.json', {
+    vm.$ajax.get('static/detail.json', {
       params: {
         name: name
       }

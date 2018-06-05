@@ -50,7 +50,7 @@ export default {
     Bus.$on('pagedata', vm.datarestore);
     Bus.$on('page', data => this.page = data);
     
-    vm.$ajax.get('src/assets/data.json')
+    vm.$ajax.get('static/data.json')
     .then(function(res){
       res.data.forEach(function(item, index){
         item.time = getLocalTime(item.time);

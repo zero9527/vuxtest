@@ -159,15 +159,15 @@ function upImg( input, COMFN, CALLBACK){
 		将base64字符串转换为2进制
 	 */
 	function convert2Binary(dataURI, fallback){
-		let byteString = window.atob(dataURI.split(',')[1]);
-		let ab = new ArrayBuffer(byteString.length);
-		let ua = new Uint8Array(ab);
+		var byte_str = window.atob(dataURI.split(',')[1]);
+		var ab = new ArrayBuffer(byte_str.length);
+		var ua = new Uint8Array(ab);
 
-		for(var i=0; i<byteString.length; i++){
-			ua[i] = byteString.charCodeAt(i)
+		for(var i=0; i<byte_str.length; i++){
+			ua[i] = byte_str.charCodeAt(i)
 		}
 		// console.log(ua)
-		let bb = new window.Blob([ ab ]);
+		var bb = new window.Blob([ ab ]);
 		// console.log(bb)
 		// 回调
 		fallback({src: bb});
