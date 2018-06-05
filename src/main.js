@@ -5,6 +5,7 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
 import Vux from './components/HelloFromVux'
+import es6 from './Components/es6'
 import aac from './Components/aac'
 import cc from './Components/cc'
 import bbb from './Components/bbb'
@@ -27,6 +28,10 @@ const routes = [
 	  path: '/',
 	  name: 'Vux',
 	  component: Vux
+	},
+	{
+		path: '/es6',
+		component: es6
 	},
 	{
 		path: '/bbb',

@@ -1,0 +1,63 @@
+﻿/**
+ * 这是公共css,
+ * amazeui中已有重置样式，不需要reset.css或normalize.css
+*/
+@charset "utf-8";
+ul, li, dl, dt, dd, form, h1, h2, h3, h4, p, input, form {
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	-webkit-appearance: none; 
+}
+
+/*placeholder颜色*/
+input::-webkit-input-placeholder{
+    color: rgba(128,128,128);
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color: rgba(128,128,128);
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color: rgba(128,128,128);
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+    color: rgba(128,128,128);
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	min-height: 500px;
+	/*font-size: .7rem;*/
+	background: #edeef2;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+/* 一些自定义方法类 -- 开始 */
+/*文字对齐*/
+.tcenter {
+	text-align: center;
+}
+.tleft {
+	text-align: left;
+}
+.tright {
+	text-align: right;
+}
+/*清除浮动*/
+.cfix::after {content: '';display: block;visibility: hidden;clear: both;zoom: 1;}
+
+/*左浮动*/
+.fleft {float: left;}
+/*右浮动*/
+.fright {float: right;}
+
+/*不换行*/
+.nowrap {white-space: nowrap;}
+/* 一些自定义方法类 -- 结束 */
+
+/*蓝色字体*/
+.fblue {color: #0d94f3;}
+/*蓝色背景*/
+.bgblue {color: #fff;background: #0d94f3;}
