@@ -57,13 +57,16 @@ export default {
     })
 
     Bus.$on('pagedata', data => this.pagedata = data);
+    Bus.$on('page', data => this.page = data);
   },
   methods: {},
   beforeDestroy() {
     Bus.$emit('pagedata', this.pagedata);
+    Bus.$emit('page', this.page);
   },
   destroyed() {
     Bus.$off('pagedata');
+    Bus.$off('page');
   }
 } 
 

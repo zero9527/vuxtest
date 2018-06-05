@@ -46,24 +46,31 @@ export default {
   },
   created () {
     let vm = this;
-    if(!vm.pagedata){
-      vm.$ajax.get('src/assets/data.json')
-      .then(function(res){
-        res.data.forEach(function(item, index){
-          item.time = getLocalTime(item.time);
-        })
-        // 数据分组
-        vm.getGroup(res.data, function(res){
-          vm.data = res;
-        });
-      })
-      .catch(function(err){
-        console.log('err: ',err);
-      })
-    }
-
     // 状态保持
     Bus.$on('pagedata', vm.datarestore);
+    Bus.$on('page', data => this.page = data);
+    
+    vm.$ajax.get('src/assets/data.json')
+    .then(function(res){
+      res.data.forEach(function(item, index){
+        item.time = getLocalTime(item.time);
+      })
+      // 数据分组
+      vm.getGroup(res.data, function(res){
+        if(!vm.pagedata){
+          vm.data = res;
+        }
+      });
+    })
+    .catch(function(err){
+      console.log('err: ',err);
+    })
+
+  },
+  watch: {
+    pagedata() {
+      this.data = this.pagedata
+    }
   },
   methods: {
     // toast 弹窗
@@ -115,15 +122,16 @@ export default {
     },
     // 获取详情数据
     detail (name) {
-      this.$router.push('/ddd/detail'+'?name=' + name);
+      // this.$router.push('/list_state/list_detail'+'?name=' + name);
+      this.$router.push(`/list_state/list_detail?name=${name}`);
     },
     // 数据恢复（状态恢复）
-    datarestore (pagedata, callback) {
+    datarestore (pagedata) {
       let vm = this;
       vm.pagedata = pagedata;
       console.group();
       console.log('before_data: ',vm.data);
-      vm.data.length = 0;
+      vm.data = [];
       for(var i=0; i<pagedata.length; i++){
         vm.data.push({
           name: pagedata[i].name,
@@ -134,21 +142,18 @@ export default {
       }
       console.log('after_data: ',vm.data);
       console.groupEnd();
-      callback(pagedata);
     },
     getStore (data){
       console.log('data: ',data);
     }
   },
   beforeDestroy () {
-    let vm = this;
-    // Bus.$emit('page', vm.page);
-    Bus.$emit('pagedata', vm.data);
+    Bus.$emit('pagedata', this.data);
+    Bus.$emit('page', this.page);
   },
   destroyed () {
-    let vm = this;
-    // Bus.$off('page', vm.page);
     Bus.$off('pagedata');
+    Bus.$off('page');
   }
 }
 </script>

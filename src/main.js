@@ -8,8 +8,8 @@ import Vux from './components/HelloFromVux'
 import aac from './Components/aac'
 import cc from './Components/cc'
 import bbb from './Components/bbb'
-import ddd from './Components/ddd'
-import detail from './Components/detail'
+import list_state from './Components/list_state'
+import list_detail from './Components/list_detail'
 // 事件总线
 import Bus from './eventbus'
 
@@ -46,12 +46,12 @@ const routes = [
 		]
 	},
 	{	// 假装是aac的儿子
-		path: '/aac/ddd',
-		component: ddd,
+		path: '/aac/list_state',
+		component: list_state,
 	},
 	{
-		path: '/ddd/detail',
-		component: detail
+		path: '/list_state/list_detail',
+		component: list_detail
 	}
 ]
 const router = new VueRouter({
