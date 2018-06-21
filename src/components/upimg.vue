@@ -2,7 +2,7 @@
   <div class="upimg">
     <input :type="maxnum ? 'button' : 'file'" :value='maxnum ? "达到最大数量" : ""' id='file' @click='upfile($event)'>
     <div id='picShow'>
-      <span v-for='p in picshowList'>
+      <span v-for='p in picshowList' :key='p.id'>
         <span 
           class="delPic"
           :time='p.time'
