@@ -9,7 +9,7 @@
     <x-button @click.native='back'>后退</x-button>
 
     <!-- 将time传给子组件 cc，然后cc 用props接 -->
-    <cc :time='time' @cc-son='receiveFromCc'></cc>
+    <!-- <cc :time='time' @cc-son='receiveFromCc'></cc> -->
 
     <!-- 跳转到 ddd 假装是 aac的儿子-->
     <router-link to='/aac/list_state'>
@@ -23,12 +23,12 @@
 <script>
 import Bus from '../eventbus'
 import upimg from '@/components/upimg'
-import cc from '@/Components/cc'
+// import cc from '@/Components/cc'
 
 export default {
   name: 'aac',
   components: {
-    cc,
+    // cc,
     upimg
   },
   data () {

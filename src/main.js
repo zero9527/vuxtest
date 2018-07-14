@@ -5,12 +5,6 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
 import Vux from './components/HelloFromVux'
-import es6 from './Components/es6'
-import aac from './Components/aac'
-import cc from './Components/cc'
-import bbb from './Components/bbb'
-import list_state from './Components/list_state'
-import list_detail from './Components/list_detail'
 // 事件总线
 import Bus from './eventbus'
 
@@ -31,32 +25,33 @@ const routes = [
 	},
 	{
 		path: '/es6',
-		component: es6
+		name: 'es6',
+		component: resolve => require(['@/components/es6'],resolve)
 	},
 	{
 		path: '/bbb',
 		name: 'bbb',
-		component: bbb
+		component: resolve => require(['@/components/bbb'], resolve)
 	},
 	{
 		path: '/aac',
 		name: 'aac',
-		component: aac,
+		component: resolve => require(['@/components/aac'],resolve),
 		children: [
 			{
 				path: 'cc',
 				name: 'cc',
-				component: cc
+				component: resolve => require(['@/components/cc'],resolve)
 			}
 		]
 	},
 	{	// 假装是aac的儿子
 		path: '/aac/list_state',
-		component: list_state,
+		component: resolve => require(['@/components/list_state'],resolve),
 	},
 	{
 		path: '/list_state/list_detail',
-		component: list_detail
+		component: resolve => require(['@/components/list_detail'],resolve)
 	}
 ]
 const router = new VueRouter({
