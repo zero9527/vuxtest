@@ -16,7 +16,7 @@ Vue.component('toast', Toast)
 
 Vue.use(VueRouter)
 Vue.use(LoadingPlugin)
-
+ 
 const routes = [
 	{
 	  path: '/',
