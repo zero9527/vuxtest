@@ -3,7 +3,7 @@
   	<h4 class='tcenter estitle'>{{msg}}</h4>
   </div>
 </template>
-
+ 
 <script>
 export default {
   name: 'es6',
