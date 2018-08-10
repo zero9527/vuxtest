@@ -9,6 +9,7 @@
     </group>
     <router-link to='/aac'><x-button>aac</x-button></router-link>
     <router-link to='/es6'><x-button plain type='primary'>es6</x-button></router-link>
+    <router-link to='/vuex1'><x-button type='warn'>vuex1</x-button></router-link>
     <x-button @click.native='tobbb'>bbb</x-button>
     <!-- loading -->
     <div style="padding: 15px;">

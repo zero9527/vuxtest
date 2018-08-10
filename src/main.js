@@ -7,11 +7,16 @@ import App from './App'
 import Vux from './components/HelloFromVux'
 // 事件总线
 import Bus from './eventbus'
+import vuex1 from './components/vuex1'
+
+import store from './assets/js/store'
 
 import axios from 'axios'
-import { LoadingPlugin, XButton, Toast } from 'vux'
+import { LoadingPlugin, XButton, Toast, XInput, Group } from 'vux'
 Vue.prototype.$ajax = axios
 Vue.component('x-button', XButton)
+Vue.component('x-input', XInput)
+Vue.component('group', Group)
 Vue.component('toast', Toast)
 
 Vue.use(VueRouter)
@@ -22,6 +27,11 @@ const routes = [
 	  path: '/',
 	  name: 'Vux',
 	  component: Vux
+	},
+	{
+		path: '/vuex1',
+		name: 'vuex1',
+		component: vuex1
 	},
 	{
 		path: '/es6',
@@ -66,6 +76,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   router,
+  store,
   created () {
   	this.$vux.loading.show({
       text: '页面加载中...'

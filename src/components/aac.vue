@@ -17,6 +17,10 @@
     </router-link>
     <!-- 以上aa, cc 是当前组件aac 的嵌套路由，将被渲染在下面router-view中 -->
     <!-- <router-view></router-view> -->
+    <group title='来自vuex的数据'>
+      <p>{{$store.state.count}}</p>
+      <p>{{$store.state.text}}</p>
+    </group>
   </div>
 </template>
 
@@ -25,8 +29,10 @@ import Bus from '../eventbus'
 import upimg from '@/components/upimg'
 // import cc from '@/Components/cc'
 
+import store from '../assets/js/store.js'
 export default {
   name: 'aac',
+  store,
   components: {
     // cc,
     upimg
@@ -57,6 +63,7 @@ export default {
     // console.log('router: ',this.$router);
     // 接收upimg组件 $emit的upimg数据
     Bus.$on('upimg', this.getupimg);
+    console.log('count: ',this.$store);
   },
   destroyed (){
     // 注销事件
